@@ -1,6 +1,6 @@
 import Person from "../Domain/Person"
-import PersonCollection from "../Domain/PersonCollection"
 import Iterator from "../Domain/Shared/Iterator"
+import PersonCollection from "./PersonCollection"
 
 export default class AgeIterator implements Iterator<Person> {
     position: number = 0
