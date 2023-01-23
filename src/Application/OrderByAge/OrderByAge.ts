@@ -10,9 +10,9 @@ export default class OrderbyAge implements CommandHandler {
     }
 
     execute() {
-        const persons = symbolAgeIterator(this.list, false)
+        const iterator = symbolAgeIterator(this.list, false)
 
-        for (const person of persons) {
+        for (const person of iterator) {
             console.log(person)
         }
     }
