@@ -29,3 +29,13 @@ export default class NameIterator implements Iterator<Person> {
         return this.people[this.position]
     }
 }
+
+function* makeNameIterator(collection: PersonCollection, reverse: boolean): Generator<Person> {
+    let people = []
+    const list = collection.getPeople().sort((a, b) => a.name.localeCompare(b.name))
+    people = reverse ? list.reverse() : list
+
+    for (let i = 0; i < collection.getCount(); i++) {
+      yield  people[i];
+    }
+}
