@@ -9,7 +9,7 @@ export default class ReverseOrderByAge implements CommandHandler {
     }
 
     execute() {
-        const iterator = this.list.getReverseChildrenIterator()
+        const iterator = this.list.getReverseAgeIterator()
 
         while (iterator.hasMore()) {
             console.log(iterator.getNext())
