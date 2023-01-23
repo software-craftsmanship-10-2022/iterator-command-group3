@@ -1,1 +1,3 @@
-export default interface CommandHandler {}
+export default interface CommandHandler {
+    execute(): void
+}
