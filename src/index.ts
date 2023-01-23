@@ -28,3 +28,10 @@ const reverseOrderByChildren = new ReverseOrderByChildren(personCollection)
 
 
 orderByName.execute()
+reverseOrderByName.execute()
+
+orderByAge.execute()
+reverseOrderByAge.execute()
+
+orderByChildren.execute()
+reverseOrderByChildren.execute()
