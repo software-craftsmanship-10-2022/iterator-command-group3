@@ -29,3 +29,14 @@ export default class ChildrenIterator implements Iterator<Person> {
         return this.people[this.position]
     }
 }
+
+function* makeChildrenIterator(collection: PersonCollection, reverse: boolean): Generator<Person> {
+    let people = []
+    const list = collection.getPeople().sort((a, b) => a.children - b.children)
+    people = reverse ? list.reverse() : list
+
+    for (let i = 0; i < collection.getCount(); i++) {
+      yield  people[i];
+    }
+}
+  
