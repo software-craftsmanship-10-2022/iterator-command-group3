@@ -36,18 +36,18 @@ function* makeChildrenIterator(collection: PersonCollection, reverse: boolean): 
     people = reverse ? list.reverse() : list
 
     for (let i = 0; i < collection.getCount(); i++) {
-      yield  people[i];
+      yield people[i];
     }
 }
   
-const myChildrenIterator = (collection: PersonCollection, reverse: boolean) =>( {
+const symbolChildrenIterator = (collection: PersonCollection, reverse: boolean) =>( {
     *[Symbol.iterator] () {
         let people = []
         const list = collection.getPeople().sort((a, b) => a.children - b.children)
         people = reverse ? list.reverse() : list
     
         for (let i = 0; i < collection.getCount(); i++) {
-          yield  people[i];
+          yield people[i];
         }
     }
 })

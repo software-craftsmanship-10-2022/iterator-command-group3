@@ -36,18 +36,18 @@ function* makeNameIterator(collection: PersonCollection, reverse: boolean): Gene
     people = reverse ? list.reverse() : list
 
     for (let i = 0; i < collection.getCount(); i++) {
-      yield  people[i];
+      yield people[i];
     }
 }
 
-const myNameIterator = (collection: PersonCollection, reverse: boolean) =>( {
+const symbolNameIterator = (collection: PersonCollection, reverse: boolean) =>( {
     *[Symbol.iterator] () {
         let people = []
         const list = collection.getPeople().sort((a, b) => a.name.localeCompare(b.name))
         people = reverse ? list.reverse() : list
     
         for (let i = 0; i < collection.getCount(); i++) {
-          yield  people[i];
+          yield people[i];
         }
     }
 })

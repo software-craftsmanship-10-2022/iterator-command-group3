@@ -2,7 +2,7 @@ import Person from "../Domain/Person"
 import Iterator from "../Domain/Shared/Iterator"
 import PersonCollection from "./PersonCollection"
 
-export default class AgeIterator implements Iterator<Person> {
+export class AgeIterator implements Iterator<Person> {
     position: number = 0
     collection: PersonCollection
     reverse: boolean
@@ -23,31 +23,31 @@ export default class AgeIterator implements Iterator<Person> {
 
     hasMore(): boolean {
         return this.position < this.collection.getCount()
-    };
+    }
 
     current(): Person {
         return this.people[this.position]
     }
 }
 
-function* makeAgeIterator(collection: PersonCollection, reverse: boolean): Generator<Person> {
+export function* makeAgeIterator(collection: PersonCollection, reverse: boolean): Generator<Person> {
     let people = []
     const list = collection.getPeople().sort((a, b) => a.age - b.age)
     people = reverse ? list.reverse() : list
 
     for (let i = 0; i < collection.getCount(); i++) {
-      yield  people[i];
+      yield people[i];
     }
 }
   
-const myChildrenIterator = (collection: PersonCollection, reverse: boolean) =>( {
+export const symbolAgeIterator = (collection: PersonCollection, reverse: boolean) =>( {
     *[Symbol.iterator] () {
         let people = []
         const list = collection.getPeople().sort((a, b) => a.age - b.age)
         people = reverse ? list.reverse() : list
     
         for (let i = 0; i < collection.getCount(); i++) {
-          yield  people[i];
+          yield people[i];
         }
     }
 })

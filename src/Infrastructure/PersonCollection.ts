@@ -1,7 +1,7 @@
 import Person from "../Domain/Person"
 import Iterator from "../Domain/Shared/Iterator"
 import NameIterator from "./NameIterator"
-import AgeIterator from "./AgeIterator"
+import {AgeIterator} from "./AgeIterator"
 import ChildrenIterator from "./ChildrenIterator"
 import PersonCollectionInterface from "../Domain/PersonCollectionInterface"
 

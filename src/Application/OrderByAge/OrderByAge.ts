@@ -1,18 +1,19 @@
-import PersonCollectionInterface from "../../Domain/PersonCollectionInterface"
 import CommandHandler from "../CommandHandler"
+import { symbolAgeIterator } from "../../Infrastructure/AgeIterator"
+import PersonCollection from "../../Infrastructure/PersonCollection"
 
 export default class OrderbyAge implements CommandHandler {
-    private list: PersonCollectionInterface
+    private list: PersonCollection
 
-    constructor(list: PersonCollectionInterface) {
+    constructor(list: PersonCollection) {
         this.list = list
     }
 
     execute() {
-        const iterator = this.list.getAgeIterator()
+        const iterator = symbolAgeIterator(this.list, false)
 
-        while (iterator.hasMore()) {
-            console.log(iterator.getNext())
+        for (const person of iterator) {
+            console.log(person)
         }
     }
 }
