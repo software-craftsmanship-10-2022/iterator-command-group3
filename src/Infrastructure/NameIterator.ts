@@ -23,7 +23,7 @@ export default class NameIterator implements Iterator<Person> {
 
     hasMore(): boolean {
         return this.position < this.collection.getCount()
-    };
+    }
 
     current(): Person {
         return this.people[this.position]
@@ -39,3 +39,16 @@ function* makeNameIterator(collection: PersonCollection, reverse: boolean): Gene
       yield  people[i];
     }
 }
+
+const myNameIterator = (collection: PersonCollection, reverse: boolean) =>( {
+    *[Symbol.iterator] () {
+        let people = []
+        const list = collection.getPeople().sort((a, b) => a.name.localeCompare(b.name))
+        people = reverse ? list.reverse() : list
+    
+        for (let i = 0; i < collection.getCount(); i++) {
+          yield  people[i];
+        }
+    }
+})
+  

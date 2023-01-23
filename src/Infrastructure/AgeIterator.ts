@@ -40,3 +40,15 @@ function* makeAgeIterator(collection: PersonCollection, reverse: boolean): Gener
     }
 }
   
+const myChildrenIterator = (collection: PersonCollection, reverse: boolean) =>( {
+    *[Symbol.iterator] () {
+        let people = []
+        const list = collection.getPeople().sort((a, b) => a.age - b.age)
+        people = reverse ? list.reverse() : list
+    
+        for (let i = 0; i < collection.getCount(); i++) {
+          yield  people[i];
+        }
+    }
+})
+  
